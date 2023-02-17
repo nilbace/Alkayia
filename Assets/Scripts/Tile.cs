@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class Tile : MonoBehaviour
     public void SetNumber(int number)
     {
         this.number = number;
-        GetComponentInChildren<TextMesh>().text = number.ToString();
+        GetComponentInChildren<TextMeshPro>().text = number.ToString();
     }
 
     public void SetPosition(int x, int y) {

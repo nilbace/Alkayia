@@ -45,6 +45,121 @@ public class GameManager : MonoBehaviour
                 ShowGameOverPanel();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            MoveTilesLeft();
+        } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            MoveTilesRight();
+        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            //MoveTilesUp();
+        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            //MoveTilesDown();
+        }
+    }
+
+     void MoveTilesLeft()
+    {
+        bool moved = false;
+        for (int y = 0; y < gridSize; y++) {
+            for (int x = 1; x < gridSize; x++) {
+                if (tiles[x, y] != null) {
+                    int newX = x;
+                    while (newX > 0 && tiles[newX - 1, y] == null) {
+                        newX--;
+                    }
+                    if (newX != x) {
+                        Tile tile = tiles[x, y];
+                        tiles[x, y] = null;
+                        tiles[newX, y] = tile;
+                        tile.x = newX;
+                        tile.transform.position = new Vector3(newX * tileSize, y * tileSize, 0);
+                        moved = true;
+                    } else if (tiles[newX - 1, y] != null && tiles[newX - 1, y].number == tiles[x, y].number) {
+                        Tile tile1 = tiles[x, y];
+                        Tile tile2 = tiles[newX - 1, y];
+                        tiles[x, y] = null;
+                        tiles[newX - 1, y] = tile1;
+                        tile1.x = newX - 1;
+                        tile1.y = y;
+                        tile1.SetNumber(tile1.number * 2);
+                        Destroy(tile2.gameObject);
+                        moved = true;
+                        }
+            }
+        }
+    }
+    if (moved) {
+        SpawnRandomTile();
+    }
+}
+
+    void MoveTilesRight()
+{
+    bool moved = false;
+    for (int y = 0; y < gridSize; y++) {
+        for (int x = gridSize - 2; x >= 0; x--) {
+            if (tiles[x, y] != null) {
+                int newX = x;
+                while (newX < gridSize - 1 && tiles[newX + 1, y] == null) {
+                    newX++;
+                }
+                if (newX != x) {
+                    Tile tile = tiles[x, y];
+                    tiles[x, y] = null;
+                    tiles[newX, y] = tile;
+                    tile.x = newX;
+                    tile.transform.position = new Vector3(newX * tileSize, y * tileSize, 0);
+                    moved = true;
+                } else if (tiles[newX + 1, y] != null && tiles[newX + 1, y].number == tiles[x, y].number) {
+                    Tile tile1 = tiles[x, y];
+                    Tile tile2 = tiles[newX + 1, y];
+                    tiles[x, y] = null;
+                    tiles[newX + 1, y] = tile1;
+                    tile1.x = newX + 1;
+                    tile1.y = y;
+                    tile1.SetNumber(tile1.number * 2);
+                    Destroy(tile2.gameObject);
+                    moved = true;
+                }
+            }
+        }
+    }
+    if (moved) {
+        SpawnRandomTile();
+    }
+}
+
+
+
+
+ void SpawnRandomTile()
+    {
+        Tile emptyTile = GetRandomEmptyTile();
+        if (emptyTile != null) {
+            GameObject tile = Instantiate(tilePrefab, emptyTile.transform.position, Quaternion.identity);
+            Tile tileComponent = tile.GetComponent<Tile>();
+            tileComponent.x = emptyTile.x;
+            tileComponent.y = emptyTile.y;
+            tileComponent.SetNumber(Random.value < 0.9f ? 2 : 4);
+            tiles[tileComponent.x, tileComponent.y] = tileComponent;
+        }
+    }
+
+    Tile GetRandomEmptyTile()
+    {
+        System.Collections.Generic.List<Tile> emptyTiles = new System.Collections.Generic.List<Tile>();
+        for (int x = 0; x < gridSize; x++) {
+            for (int y = 0; y < gridSize; y++) {
+                if (tiles[x, y] == null) {
+                    emptyTiles.Add(new Tile { x = x, y = y });
+                }
+            }
+        }
+        if (emptyTiles.Count > 0) {
+            return emptyTiles[Random.Range(0, emptyTiles.Count)];
+        } else {
+            return null;
+        }
     }
 
     // 게임판의 모든 타일을 초기화합니다.
@@ -73,95 +188,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 타일을 이동시킵니다.
-    public void MoveTiles(Vector2 direction)
-    {
-        if (CanMoveTiles(direction)) {
-            emptyTiles.Clear();
-            bool moved = false;
-            for (int i = 0; i < gridSize; i++){
-            for (int j = 0; j < gridSize; j++) {
-                int x = i;
-                int y = j;
-                if (direction == Vector2.left || direction == Vector2.up) {
-                    x = gridSize - 1 - i;
-                    y = gridSize - 1 - j;
-                }
-                Tile currentTile = tiles[x, y];
-                if (currentTile != null) {
-                    Tile nextTile = GetNextTile(currentTile, direction);
-                    if (nextTile != null) {
-                        if (nextTile.IsEmpty()) {
-                            MoveTile(currentTile, nextTile);
-                            i = -1;
-                            moved = true;
-                        } else if (currentTile.CanMergeWith(nextTile)) {
-                            MergeTiles(currentTile, nextTile);
-                            emptyTiles.Add(currentTile);
-                            i = -1;
-                            moved = true;
-                        }
-                    }
-                }
-            }
-        }
-        if (moved) {
-            SpawnTile();
-            UpdateScore();
-        }
-    }
-}
-
-// 타일을 이동시킵니다.
-void MoveTile(Tile currentTile, Tile nextTile)
-{
-    nextTile.SetNumber(currentTile.GetNumber());
-    currentTile.SetNumber(0);
-    emptyTiles.Add(currentTile);
-    emptyTiles.Remove(nextTile);
-    PlaySound(moveClip);
-}
-
-// 타일을 병합시킵니다.
-void MergeTiles(Tile currentTile, Tile nextTile)
-{
-    int mergedValue = currentTile.GetNumber() * 2;
-    nextTile.SetNumber(mergedValue);
-    currentTile.SetNumber(0);
-    emptyTiles.Add(currentTile);
-    PlaySound(mergeClip);
-    if (mergedValue >= targetValue) {
-        isGameOver = true;
-        ShowGameOverPanel();
-    }
-    score += mergedValue;
-    if (score > highScore) {
-        highScore = score;
-    }
-}
-
-// 타일을 이동할 수 있는지 검사합니다.
-bool CanMoveTiles(Vector2 direction)
-{
-    for (int i = 0; i < gridSize; i++) {
-        for (int j = 0; j < gridSize; j++) {
-            int x = i;
-            int y = j;
-            if (direction == Vector2.left || direction == Vector2.up) {
-                x = gridSize - 1 - i;
-                y = gridSize - 1 - j;
-            }
-            Tile currentTile = tiles[x, y];
-            if (currentTile != null) {
-                Tile nextTile = GetNextTile(currentTile, direction);
-                if (nextTile != null && (nextTile.IsEmpty() || currentTile.CanMergeWith(nextTile))) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}
 
 // 타일을 병합할 수 있는지 검사합니다.
 bool CanMergeTiles()
@@ -204,11 +230,6 @@ Tile GetNextTile(Tile currentTile, Vector2 direction)
     }
 }
 
-// 빈 타일 중 하나를 무작위로 선택합니다.
-Tile GetRandomEmptyTile()
-{
-    return emptyTiles[Random.Range(0, emptyTiles.Count)];
-}
 
 // 게임오버 패널을 보여줍니다.
 void ShowGameOverPanel()
