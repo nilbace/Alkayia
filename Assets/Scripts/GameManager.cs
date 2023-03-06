@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject[] n;
     public GameObject Quit;
-    public TMP_Text Score, BestScore, Plus;
+    [SerializeField] bool[] ShootIndex;
     
 
     int x, y, i, j, k , l, score;
@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     {
         Spawn();
         Spawn();
-        BestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
     }
 
     // Update is called once per frame
@@ -80,19 +79,6 @@ public class GameManager : MonoBehaviour
                     Spawn();
                     k = 0;
                     l=0;
-
-
-                    //점수
-                    if(score > 0)
-                    {
-                        Plus.text =  "+" + score.ToString() + "    ";
-                        Plus.GetComponent<Animator>().SetTrigger("PlusBack");
-                        Plus.GetComponent<Animator>().SetTrigger("Plus");
-                        Score.text = (int.Parse(Score.text) + score).ToString();
-                        if(PlayerPrefs.GetInt("BestScore", 0) < int.Parse(Score.text)) PlayerPrefs.SetInt("BestScore", int.Parse(Score.text));
-                        BestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
-                        score = 0;
-                    }
 
                     for(x = 0; x <= 3; x++) for(y=0;y<=3;y++)
                     {
