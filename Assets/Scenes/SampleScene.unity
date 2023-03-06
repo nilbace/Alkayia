@@ -422,6 +422,10 @@ MonoBehaviour:
   - {fileID: 8375262465739335982, guid: 52d08b7be7ceab84ab1b02fb9ba49214, type: 3}
   - {fileID: 6500022644813883239, guid: 1fbe466e6792ee04295a1f483470960b, type: 3}
   - {fileID: 6750482966894838283, guid: 34725c17419f77347a80fb7798ea11ee, type: 3}
+  Quit: {fileID: 1189028094}
+  Score: {fileID: 2069766337}
+  BestScore: {fileID: 1311234634}
+  Plus: {fileID: 1718542123}
 --- !u!1 &1189028094
 GameObject:
   m_ObjectHideFlags: 0

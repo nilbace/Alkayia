@@ -1,18 +1,24 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] n;
+    public GameObject Quit;
+    public TMP_Text Score, BestScore, Plus;
+    
 
-    int x, y, i, j;
+    int x, y, i, j, k , l, score;
     GameObject[,] Square = new GameObject[4,4]; 
 
     Vector3 firstPos, gap;
-    bool wait, move;
+    bool wait, move, stop;
     void Start()
     {
         Spawn();
         Spawn();
+        BestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
     }
 
     // Update is called once per frame
@@ -22,7 +28,12 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
-        
+
+        if(stop)
+        {
+            return;
+        }
+
         if(Input.GetMouseButtonDown(0) || (Input.touchCount==1 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
             wait = true;
@@ -67,12 +78,40 @@ public class GameManager : MonoBehaviour
                 {
                     move = false;
                     Spawn();
+                    k = 0;
+                    l=0;
+
+
+                    //점수
+                    if(score > 0)
+                    {
+                        Plus.text =  "+" + score.ToString() + "    ";
+                        Plus.GetComponent<Animator>().SetTrigger("PlusBack");
+                        Plus.GetComponent<Animator>().SetTrigger("Plus");
+                        Score.text = (int.Parse(Score.text) + score).ToString();
+                        if(PlayerPrefs.GetInt("BestScore", 0) < int.Parse(Score.text)) PlayerPrefs.SetInt("BestScore", int.Parse(Score.text));
+                        BestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
+                        score = 0;
+                    }
 
                     for(x = 0; x <= 3; x++) for(y=0;y<=3;y++)
                     {
-                        if(Square[x,y]== null) continue;
+                        if(Square[x,y]== null) { k++; continue;}
                         if(Square[x,y].tag == "Combine") Square[x,y].tag = "Untagged";
                     }
+                    if(k==0)
+                    {
+                        for(y=0; y<=3; y++) for(x=0; x<=2;x++)  if(Square[x,y].name == Square[x+1, y].name) l++;
+                        for(x=0; x<=3; x++) for(y=0; y<=2;y++)  if(Square[x,y].name == Square[x, y+1].name) l++;
+                        print(l);
+                        if(l == 0)
+                        {
+                            print(l);
+                            stop = true;
+                            Quit.SetActive(true); return;
+                        }
+                    }
+                    
                 }
             }
         }
@@ -100,6 +139,7 @@ public class GameManager : MonoBehaviour
             Square[x2,y2] = Instantiate(n[j+1], new Vector3(-1.8f + 1.2f*x2 , -1.8f + 1.2f*y2,0), Quaternion.identity);
             Square[x2,y2].tag = "Combine";
             Square[x2,y2].GetComponent<Animator>().SetTrigger("Combine");
+            score += (int)Mathf.Pow(2, j+2);
         }
     }
 
