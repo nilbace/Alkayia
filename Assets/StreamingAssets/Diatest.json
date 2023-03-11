@@ -1,0 +1,29 @@
+[
+   {
+      "index":0,
+      "speech":"안녕",
+      "name":"Alkayia",
+      "isLeft":"TRUE",
+      "isCenter":"TRUE",
+      "feeling":"Normal",
+      "ExtraEvent":"none"
+   },
+   {
+      "index":1,
+      "speech":"하트",
+      "name":"Nadira",
+      "isLeft":"TRUE",
+      "isCenter":"TRUE",
+      "feeling":"Sad",
+      "ExtraEvent":"none"
+   },
+   {
+      "index":2,
+      "speech":"뒤질래",
+      "name":"Lyra",
+      "isLeft":"FALSE",
+      "isCenter":"FALSE",
+      "feeling":"Upset",
+      "ExtraEvent":"none"
+   }
+]
