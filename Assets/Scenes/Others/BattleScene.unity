@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4e5f994df428d459d013a8072eaad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardSize: 1
+  boardSize: 2
 --- !u!212 &1668017379
 SpriteRenderer:
   m_ObjectHideFlags: 0
