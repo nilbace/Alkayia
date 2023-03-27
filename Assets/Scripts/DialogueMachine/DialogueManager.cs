@@ -16,7 +16,6 @@ public class DialogueManager : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
-            print("Hi");
             ShowNext();
             index++;
         }
