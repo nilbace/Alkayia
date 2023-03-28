@@ -9,14 +9,29 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField] float speed;
     public RectTransform BackgroundImage;
     public Button[] sectionButtons;
+    public Image RequestBoard;
+    public GameObject QuestListParent;
+    public List<GameObject> QuestLists = new List<GameObject>();
+    [SerializeField] Ease EaseStatus;
+    [SerializeField] float moveTime;
+    [SerializeField] float elasticScale;
+    [SerializeField] float periodScale;
     void Start()
     {
         sectionButtons[2].interactable = false;
+        QuestLists.Add(QuestListParent.transform.GetChild(0).gameObject);
+        QuestLists.Add(QuestListParent.transform.GetChild(1).gameObject);
+        QuestLists.Add(QuestListParent.transform.GetChild(2).gameObject);
     }
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Backspace))
+        {
+            RequestBoard.rectTransform.DOAnchorPosY(1300f, moveTime).SetEase(EaseStatus, elasticScale, periodScale);
+            StopAllCoroutines();
+            StartCoroutine(UnQuestCall());
+        }
     }
 
     public void PressUIButtion(int index)
@@ -28,11 +43,19 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
+    public void RequestButton()
+    {
+        RequestBoard.rectTransform.DOAnchorPosY(-507f, moveTime).SetEase(EaseStatus, elasticScale, periodScale);
+        StopAllCoroutines();
+        StartCoroutine(QuestCall());
+    }
+
+
     void LeftTOIndex(int index)
     {
-        //StopAllCoroutines();
-        //StartCoroutine(moveto(index*(-1080)));
-        BackgroundImage.transform.DOMoveX
+        StopAllCoroutines();
+        StartCoroutine(moveto(index*(-1080)));
+        //BackgroundImage.DOAnchorPosX(index*(-1080), moveTime).SetEase(EaseStatus, amplitude: elasticScale, period: periodScale);
     }
     
     IEnumerator moveto(float targetX)
@@ -46,4 +69,23 @@ public class LobbyUIManager : MonoBehaviour
     
     }
 
+    IEnumerator QuestCall()
+    {
+        yield return new WaitForSeconds(moveTime);
+        foreach(GameObject quest in QuestLists)
+        {
+            quest.transform.DOLocalMoveX(0f ,moveTime).SetEase(EaseStatus, elasticScale, periodScale);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator UnQuestCall()
+    {
+        yield return new WaitForSeconds(0.01f);
+        foreach(GameObject quest in QuestLists)
+        {
+            quest.transform.DOLocalMoveX(-1080f ,0.03f).SetEase(EaseStatus, elasticScale, periodScale);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
 }
