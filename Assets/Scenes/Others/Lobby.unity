@@ -461,7 +461,7 @@ MonoBehaviour:
   QuestListParent: {fileID: 37029679}
   QuestLists: []
   EaseStatus: 24
-  moveTime: 1.62
+  moveTime: 0.87
   elasticScale: 1.08
   periodScale: 1.05
 --- !u!1 &178245338
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 921397031}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999982
+  m_Size: 0.9998595
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1880,7 +1880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0002173454}
+  m_AnchoredPosition: {x: 0, y: -0.00023928384}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &720297374
@@ -4487,7 +4487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: -11.48}
+  m_AnchoredPosition: {x: -45, y: -11.48}
   m_SizeDelta: {x: 737.81, y: 1265.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1963309013
@@ -4505,7 +4505,7 @@ MonoBehaviour:
   m_Content: {fileID: 188290511}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
