@@ -58,7 +58,7 @@ public class CamResor : MonoBehaviour
  
     void OnPreCull()
     {
-        if (Application.isEditor) return;
+        //if (Application.isEditor) return;
         Rect wp = Camera.main.rect;
         Rect nr = new Rect(0, 0, 1, 1);
  
@@ -72,11 +72,12 @@ public class CamResor : MonoBehaviour
     // Use this for initialization
     void Start () {
         RescaleCamera();
+        OnPreCull();
     }
    
     // Update is called once per frame
     void Update () {
-        RescaleCamera();
+        //RescaleCamera();
     }
     #endregion
 }
