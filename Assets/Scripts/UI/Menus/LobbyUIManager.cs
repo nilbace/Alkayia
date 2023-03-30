@@ -9,6 +9,8 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField] float speed;
     public RectTransform BackgroundImage;
     public Button[] sectionButtons;
+    [SerializeField] float ScrollDownPosition;
+    [SerializeField] float ScrollUpPosition;
     public Image RequestBoard;
     public Transform ContentParent;
     public GameObject Tree;
@@ -19,7 +21,6 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField] float periodScale;
     void Start()
     {
-        sectionButtons[2].interactable = false; //off GuildButton
         
     }
 
@@ -27,7 +28,7 @@ public class LobbyUIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
-            RequestBoard.rectTransform.DOAnchorPosY(1300f, moveTime).SetEase(EaseStatus, elasticScale, periodScale);
+            RequestBoard.rectTransform.DOAnchorPosY(ScrollUpPosition, moveTime).SetEase(EaseStatus, elasticScale, periodScale);
             StopAllCoroutines();
             StartCoroutine(UnQuestCall());
         }
@@ -44,7 +45,7 @@ public class LobbyUIManager : MonoBehaviour
 
     public void RequestButton()
     {
-        RequestBoard.rectTransform.DOAnchorPosY(-507f, moveTime).SetEase(EaseStatus, elasticScale, periodScale);
+        RequestBoard.rectTransform.DOAnchorPosY(ScrollDownPosition, moveTime).SetEase(EaseStatus, elasticScale, periodScale);
         StopAllCoroutines();
         StartCoroutine(QuestCall());
     }
@@ -54,7 +55,6 @@ public class LobbyUIManager : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(moveto(index*(-1080)));
-        //BackgroundImage.DOAnchorPosX(index*(-1080), moveTime).SetEase(EaseStatus, amplitude: elasticScale, period: periodScale);
     }
     
     IEnumerator moveto(float targetX)
