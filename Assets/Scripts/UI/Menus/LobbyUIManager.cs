@@ -10,7 +10,8 @@ public class LobbyUIManager : MonoBehaviour
     public RectTransform BackgroundImage;
     public Button[] sectionButtons;
     public Image RequestBoard;
-    public GameObject QuestListParent;
+    public Transform ContentParent;
+    public GameObject Tree;
     public List<GameObject> QuestLists = new List<GameObject>();
     [SerializeField] Ease EaseStatus;
     [SerializeField] float moveTime;
@@ -18,10 +19,8 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField] float periodScale;
     void Start()
     {
-        sectionButtons[2].interactable = false;
-        QuestLists.Add(QuestListParent.transform.GetChild(0).gameObject);
-        QuestLists.Add(QuestListParent.transform.GetChild(1).gameObject);
-        QuestLists.Add(QuestListParent.transform.GetChild(2).gameObject);
+        sectionButtons[2].interactable = false; //off GuildButton
+        
     }
 
     void Update()
