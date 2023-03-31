@@ -691,8 +691,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 621.81}
-  m_SizeDelta: {x: 800, y: 1240.7}
+  m_AnchoredPosition: {x: 0, y: 648.18}
+  m_SizeDelta: {x: 800, y: 1187.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &203826678
 MonoBehaviour:
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_HorizontalScrollbarVisibility: 2
   m_VerticalScrollbarVisibility: 2
   m_HorizontalScrollbarSpacing: -3
-  m_VerticalScrollbarSpacing: -3
+  m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1131,7 +1131,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &350415442
 MonoBehaviour:
@@ -1598,8 +1598,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -46.38}
-  m_SizeDelta: {x: 800, y: 107.23}
+  m_AnchoredPosition: {x: 0, y: -49.998}
+  m_SizeDelta: {x: 800, y: 104.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &551253591
 MonoBehaviour:
@@ -2685,6 +2685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 933270851}
   - component: {fileID: 933270850}
+  - component: {fileID: 933270852}
   m_Layer: 0
   m_Name: UserDataManager
   m_TagString: Untagged
@@ -2721,6 +2722,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &933270852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933270849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a5f755ee8ffec4ebe52681c3960fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonsterDatas: {fileID: 4900000, guid: a9843b02f48f75847a62f292b27b1a53, type: 3}
+  AllMonList: []
 --- !u!1 &955105112
 GameObject:
   m_ObjectHideFlags: 0
