@@ -6,13 +6,17 @@ using DG.Tweening;
 
 public class LobbyUIManager : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [Header("BackgroundImage")]
+    [SerializeField] float backImageMoveTime;
     public RectTransform BackgroundImage;
+    [Header("SectionButtons")]
+
     public Button[] sectionButtons;
     [SerializeField] float ScrollDownPosition;
     [SerializeField] float ScrollUpPosition;
     public Image RequestBoard;
     public Transform ContentParent;
+    public GameObject QuestList;
     public GameObject Tree;
     public List<GameObject> QuestLists = new List<GameObject>();
     [SerializeField] Ease EaseStatus;
@@ -21,7 +25,7 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField] float periodScale;
     void Start()
     {
-        
+        CreateQuestList();
     }
 
     void Update()
@@ -30,13 +34,22 @@ public class LobbyUIManager : MonoBehaviour
         {
             RequestBoard.rectTransform.DOAnchorPosY(ScrollUpPosition, moveTime).SetEase(EaseStatus, elasticScale, periodScale);
             StopAllCoroutines();
-            StartCoroutine(UnQuestCall());
+            StartCoroutine(UnQuestBoardCall());
         }
+    }
+
+    void CreateQuestList()
+    {
+        for(int i = (int)UserData.instance.mySaveData.Data_conquered+1; i >0 ; i--)
+            {
+                GameObject listObject = Instantiate(QuestList, Vector3.up, Quaternion.identity, ContentParent);
+                listObject.GetComponent<QuestList>().SetQuest((Define.MonsterList)i);
+            }
     }
 
     public void PressUIButtion(int index)
     {
-        LeftTOIndex(index);
+        BackgroundImage.DOAnchorPosX(index*(-1080f), backImageMoveTime).SetEase(Ease.OutCirc);
         for(int i = 0; i<5;i++)
         {
             sectionButtons[i].interactable = i==index ? false : true;
@@ -47,28 +60,11 @@ public class LobbyUIManager : MonoBehaviour
     {
         RequestBoard.rectTransform.DOAnchorPosY(ScrollDownPosition, moveTime).SetEase(EaseStatus, elasticScale, periodScale);
         StopAllCoroutines();
-        StartCoroutine(QuestCall());
+        StartCoroutine(QuestBoardCall());
     }
 
 
-    void LeftTOIndex(int index)
-    {
-        StopAllCoroutines();
-        StartCoroutine(moveto(index*(-1080)));
-    }
-    
-    IEnumerator moveto(float targetX)
-    {
-        while (Mathf.Abs(BackgroundImage.localPosition.x - targetX) > 1f)
-        {
-            BackgroundImage.localPosition = Vector3.Lerp(BackgroundImage.localPosition, new Vector3(targetX, BackgroundImage.localPosition.y, transform.position.z), speed * Time.deltaTime);
-            yield return null;
-        }
-        BackgroundImage.localPosition = new Vector3(targetX, BackgroundImage.localPosition.y, BackgroundImage.localPosition.z);
-    
-    }
-
-    IEnumerator QuestCall()
+    IEnumerator QuestBoardCall()
     {
         yield return new WaitForSeconds(moveTime);
         foreach(GameObject quest in QuestLists)
@@ -78,7 +74,7 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
-    IEnumerator UnQuestCall()
+    IEnumerator UnQuestBoardCall()
     {
         yield return new WaitForSeconds(0.01f);
         foreach(GameObject quest in QuestLists)

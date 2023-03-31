@@ -4,45 +4,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Text;
+using static Define;
 
 public class UserData : MonoBehaviour
 {
-    public enum AlkayiaSkill{
-        IceNeedle, 
-        IceShield, 
-        IceSpear, 
-        IceThorn, 
-        IceShower, 
-        IceStorm, 
-        IceSword, 
-        IceHammer, 
-        IceBreath,
-        MaxCount
-    }
-    [SerializeField] AlkayiaSkill LearnedSkill;
-    public enum MonsterList{
-        None,
-        Smile, 
-        Goblin, 
-        Ent, 
-        Fairy, 
-        Wolf, 
-        Orc, 
-        Demon,
-        MaxCount
-    }
-
-    [SerializeField] MonsterList ConqueredMonster;
-    SaveData mySaveData;
+    public static UserData instance;
+    public SaveData mySaveData;
     string playerData;
-    void Start()
-    {
-        Init();
-    }
+    
+private void Awake() {
+    instance = this;
+    LoadPlayerDatafromJson();
+}
 
-    void Init()
+    public void SavePlayerDataToJson()
     {
+        string path;
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            path = Path.Combine(Application.persistentDataPath, "playerData.json");
+        }
+        else
+        {
+            path = Path.Combine(Application.dataPath, "playerData.json");
+        }
+        string jsonData = JsonUtility.ToJson(mySaveData, true);
 
+        FileStream fileStream = new FileStream(path, FileMode.Create);
+        byte[] data = Encoding.UTF8.GetBytes(jsonData);
+        fileStream.Write(data, 0, data.Length);
+        fileStream.Close();
     }
 
     public void LoadPlayerDatafromJson()
@@ -59,7 +50,8 @@ public class UserData : MonoBehaviour
 
         if(!File.Exists(path))
         {
-            //mySaveData = new SaveData();
+            mySaveData = new SaveData();
+            SavePlayerDataToJson();
             return;
         }
 
@@ -70,19 +62,21 @@ public class UserData : MonoBehaviour
         print(fileStream.ToString());
         string jsonData = Encoding.UTF8.GetString(data);
 
-        //playerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        mySaveData = JsonUtility.FromJson<SaveData>(jsonData);
     }
-    
 
     [Serializable]
     public class SaveData{
-        SaveData()
+        //기본 생성자
+     
+
+        public AlkayiaSkill Data_learnedSkill;
+        public MonsterList  Data_conquered;
+
+        public SaveData(AlkayiaSkill data_learnedSkill = AlkayiaSkill.IceNeedle, MonsterList data_conquered = MonsterList.None)
         {
-            Data_learnedSkill = AlkayiaSkill.IceNeedle;
-            Data_conquered = MonsterList.None;
+            Data_learnedSkill = data_learnedSkill;
+            Data_conquered = data_conquered;
         }
-        AlkayiaSkill Data_learnedSkill;
-        MonsterList  Data_conquered;
-        
     }
 }
