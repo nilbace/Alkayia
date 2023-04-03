@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class DataParsingMachine : MonoBehaviour
 {
+    public static DataParsingMachine Inst;
     public TextAsset MonsterDatas;
     public List<Monster> AllMonList;
+    private void Awake() {
+        Inst = this;
+    }
 
     void Start()
     {

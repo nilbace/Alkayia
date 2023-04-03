@@ -17,6 +17,7 @@ private void Awake() {
     LoadPlayerDatafromJson();
 }
 
+    [ContextMenu("데이터 저장")]
     public void SavePlayerDataToJson()
     {
         string path;
@@ -36,6 +37,7 @@ private void Awake() {
         fileStream.Close();
     }
 
+    [ContextMenu("데이터 불러오기")]
     public void LoadPlayerDatafromJson()
     {
         string path;

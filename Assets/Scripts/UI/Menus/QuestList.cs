@@ -27,6 +27,6 @@ public class QuestList : MonoBehaviour
 
     public void StartQuest()
     {
-        print(ThisQuestMonster);
+        MonsterInfo.OpenInfoPopup(DataParsingMachine.Inst.AllMonList[(int)ThisQuestMonster]);
     }
 }
