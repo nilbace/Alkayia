@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using static Define;
+using UnityEngine.SceneManagement;
 
 public class MonsterInfo : MonoBehaviour
 {
@@ -34,4 +35,8 @@ public class MonsterInfo : MonoBehaviour
         gameObject.SetActive(false);
     }
     
+    public void StartHunt()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
