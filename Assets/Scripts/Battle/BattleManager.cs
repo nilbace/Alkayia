@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 using UnityEngine.UI;
-public class GameManager : MonoBehaviour
+
+public class BattleManager : MonoBehaviour
 {
     public GameObject[] n;
     public GameObject Quit;
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     Vector3 firstPos, gap;
     bool wait, move, stop;
-    public static GameManager instance;
+    public static BattleManager instance;
     void Awake()
     {
         if (null == instance)

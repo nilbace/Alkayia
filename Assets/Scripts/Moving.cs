@@ -10,8 +10,8 @@ public class Moving : MonoBehaviour
     float tilespacing;
     [SerializeField] RuntimeAnimatorController[] myControllers = new RuntimeAnimatorController[3];
     private void Start() {
-        startpoz = GameManager.instance.Zero_ZeroPoz;
-        tilespacing = GameManager.instance.Tilespacing;
+        startpoz = BattleManager.instance.Zero_ZeroPoz;
+        tilespacing = BattleManager.instance.Tilespacing;
 
         switch(EquipDatas.instance.boardSize)
         {
