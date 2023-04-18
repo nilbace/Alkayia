@@ -13,15 +13,23 @@ public class Define
         MaxCount
     }
 
-    public enum MonsterList{
-        None,
-        Smile, 
-        Goblin, 
-        Ent, 
-        Fairy, 
-        Wolf, 
-        Orc, 
-        Demon,
-        MaxCount
+    public enum ItemCategory{Amplifier, Necklace, Bracelet, Earrings, Destroy, Balance}
+
+    [System.Serializable] // 장비 아이템들
+    public class Item{
+    public string ItemName;
+    public int ItemIndex;
+    public int itemStat;
+    public string itemInfo;
+    public ItemCategory itemCategory;
+
+        public Item(string itemName, int itemIndex, int itemStat, string itemInfo, ItemCategory itemCategory)
+        {
+            ItemName = itemName;
+            ItemIndex = itemIndex;
+            this.itemStat = itemStat;
+            this.itemInfo = itemInfo;
+            this.itemCategory = itemCategory;
+        }
     }
 }

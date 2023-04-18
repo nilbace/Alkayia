@@ -73,12 +73,12 @@ private void Awake() {
      
 
         public AlkayiaSkill Data_learnedSkill;
-        public MonsterList  Data_conquered;
+        public int int_conqueredMonster;
 
-        public SaveData(AlkayiaSkill data_learnedSkill = AlkayiaSkill.IceNeedle, MonsterList data_conquered = MonsterList.None)
+        public SaveData(AlkayiaSkill data_learnedSkill = AlkayiaSkill.IceNeedle, int conqueredmonster = 0)
         {
             Data_learnedSkill = data_learnedSkill;
-            Data_conquered = data_conquered;
+            int_conqueredMonster = conqueredmonster;
         }
     }
 }

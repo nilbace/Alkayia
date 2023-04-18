@@ -40,10 +40,10 @@ public class LobbyUIManager : MonoBehaviour
 
     void CreateQuestList()
     {
-        for(int i = (int)UserData.instance.mySaveData.Data_conquered+1; i >0 ; i--)
+        for(int i = UserData.instance.mySaveData.int_conqueredMonster+1; i >0 ; i--)
             {
                 GameObject listObject = Instantiate(QuestList, Vector3.up, Quaternion.identity, ContentParent);
-                listObject.GetComponent<QuestList>().SetQuest((Define.MonsterList)i);
+                listObject.GetComponent<QuestList>().SetQuest(i);
             }
     }
 

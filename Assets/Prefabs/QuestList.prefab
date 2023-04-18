@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBA54\uC778 \uD018\uC2A4\uD2B8"
+  m_text: "\uD018\uC2A4\uD2B8 \uB2E8\uACC4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f4ec5ff819048440bb7ad2824d13023, type: 2}
   m_sharedMaterial: {fileID: -389822298212514485, guid: 8f4ec5ff819048440bb7ad2824d13023, type: 2}
@@ -186,7 +186,7 @@ MonoBehaviour:
   BackGround: {fileID: 950019912125499369}
   QuestGrade: {fileID: 102050153348914220}
   QuestName: {fileID: 950019912456939638}
-  ThisQuestMonster: 0
+  ThisQuestMonsterIndex: 0
 --- !u!1 &950019912125499372
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACE0\uBE14\uB9B0 \uD1A0\uBC8C"
+  m_text: "\uBAAC\uC2A4\uD130 \uD1A0\uBC8C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f4ec5ff819048440bb7ad2824d13023, type: 2}
   m_sharedMaterial: {fileID: -389822298212514485, guid: 8f4ec5ff819048440bb7ad2824d13023, type: 2}

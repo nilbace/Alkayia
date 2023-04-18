@@ -9,17 +9,19 @@ public class DataParsingMachine : MonoBehaviour
     public List<Monster> AllMonList;
     private void Awake() {
         Inst = this;
-    }
 
-    void Start()
-    {
         string[] line = MonsterDatas.text.Substring(0, MonsterDatas.text.Length - 1).Split('\n');
         for (int i = 0; i < line.Length; i++)
         {
             string[] row = line[i].Split('\t');            
             AllMonList.Add(new Monster(row[0], int.Parse(row[1]), int.Parse(row[2]), 
-            int.Parse(row[3]), row[4]));
+            int.Parse(row[3]), row[4], i));
         }
+    }
+
+    void Start()
+    {
+        
     }
 
     void Update()
@@ -32,6 +34,7 @@ public class DataParsingMachine : MonoBehaviour
 [System.Serializable]
 public class Monster{
     public string name;
+    public int Monsterindex;
     public int attackPower;
     public int attackTerm;
     public int HP;
@@ -41,12 +44,14 @@ public class Monster{
     int attackPower = 5, 
     int attackTerm = 5, 
     int hP = 30
-    , string boardExplanation = "이게 보이면 안된다!")
+    , string boardExplanation = "이게 보이면 안된다!",
+    int monindex = 0)
     {
         this.name = name;
         this.attackPower = attackPower;
         this.attackTerm = attackTerm;
         HP = hP;
         this.boardExplanation = boardExplanation;
+        this.Monsterindex = monindex;
     }
 }
