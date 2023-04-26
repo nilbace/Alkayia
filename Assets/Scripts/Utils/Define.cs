@@ -1,3 +1,4 @@
+using UnityEngine;
 public class Define
 {
     public enum AlkayiaSkill{
@@ -17,6 +18,7 @@ public class Define
 
     [System.Serializable] // 장비 아이템들
     public class Item{
+    public Sprite image;
     public string ItemName;
     public int ItemIndex;
     public int itemStat;
@@ -30,6 +32,8 @@ public class Define
             this.itemStat = itemStat;
             this.itemInfo = itemInfo;
             this.itemCategory = itemCategory;
+            string temp = "Temps/Acc/" + itemName;
+            this.image = Resources.Load<Sprite>(temp);
         }
     }
 }

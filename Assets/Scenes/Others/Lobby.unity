@@ -434,8 +434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4efad698b51b04418e8024154aa6565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 053b8ba8daa37814d904ef00b0ab462e, type: 2}
 --- !u!1 &97309005
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +658,6 @@ GameObject:
   - component: {fileID: 147507328}
   - component: {fileID: 147507327}
   - component: {fileID: 147507331}
-  - component: {fileID: 147507332}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -781,18 +778,6 @@ MonoBehaviour:
   moveTime: 0.87
   elasticScale: 1.08
   periodScale: 1.05
---- !u!114 &147507332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147507326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e121620ebe44844946c2f4ca2db1fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &153062662
 GameObject:
   m_ObjectHideFlags: 0
@@ -3624,7 +3609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySaveData:
     Data_learnedSkill: 7
-    int_conqueredMonster: 2
+    int_conqueredMonster: 5
 --- !u!4 &933270851
 Transform:
   m_ObjectHideFlags: 0
@@ -5606,7 +5591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CateName: {fileID: 452162562}
   Item: {fileID: 1083220341309992087, guid: 784da8f401e65a04c9b4ece74f40c50b, type: 3}
-  content: {fileID: 1939217963}
+  content: {fileID: 1939217964}
   itemsOnPopup: []
 --- !u!1 &1572962891
 GameObject:

@@ -8,10 +8,12 @@ public class St_Popup : MonoBehaviour
 {
     [SerializeField] TMP_Text CateName;
     [SerializeField] GameObject Item;
-    [SerializeField] GameObject content;
+    [SerializeField] Transform content;
     public List<GameObject> itemsOnPopup;
     public void setName(string name)
     {
         CateName.text = name;
+
+        
     } 
 }
