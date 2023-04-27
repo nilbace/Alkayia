@@ -10,12 +10,17 @@ public class UserData : MonoBehaviour
 {
     public static UserData instance;
     public SaveData mySaveData;
-    string playerData;
+    public List<Item> My_purchased_items = new List<Item>();
+    public List<Item> Now_Equip_items = new List<Item>();
     
 private void Awake() {
     instance = this;
     LoadPlayerDatafromJson();
 }
+
+    private void Start() {
+        StoreSection.instance.SetGoldText();
+    }
 
     [ContextMenu("데이터 저장")]
     public void SavePlayerDataToJson()
@@ -65,20 +70,33 @@ private void Awake() {
         string jsonData = Encoding.UTF8.GetString(data);
 
         mySaveData = JsonUtility.FromJson<SaveData>(jsonData);
+        //돈 읽어서 불러오기
     }
 
     [Serializable]
     public class SaveData{
-        //기본 생성자
-     
-
         public AlkayiaSkill Data_learnedSkill;
         public int int_conqueredMonster;
+        public List<int> Purchased_Equipments_index;
+        public int myMoney;
 
-        public SaveData(AlkayiaSkill data_learnedSkill = AlkayiaSkill.IceNeedle, int conqueredmonster = 0)
+        public SaveData(AlkayiaSkill data_learnedSkill = AlkayiaSkill.IceNeedle, int conqueredmonster = 0, List<int> indexList = null)
         {
             Data_learnedSkill = data_learnedSkill;
             int_conqueredMonster = conqueredmonster;
+            Purchased_Equipments_index = indexList;
+            myMoney = 0;
+        }
+    }
+
+    public void LoadMyPurchasedItems()
+    {    
+        foreach (Item item in ItemDataBase.AllitemList)
+        {
+            if(mySaveData.Purchased_Equipments_index.Contains(item.ItemIndex))
+            {
+                My_purchased_items.Add(item);
+            }
         }
     }
 }

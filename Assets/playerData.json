@@ -1,4 +1,12 @@
 {
-    "Data_learnedSkill": 6,
-    "int_conqueredMonster": 4
+    "Data_learnedSkill": 7,
+    "int_conqueredMonster": 3,
+    "Purchased_Equipments_index": [
+        101,
+        201,
+        301,
+        302,
+        401
+    ],
+    "myMoney": 334
 }

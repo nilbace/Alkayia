@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 public class ItemDataBase : MonoBehaviour
 {
     public static List<Item> AllitemList = new List<Item>();
+    int isdone = 0;
 
     #region Url About Items
     const string AmpUrl  = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&range=A2:D";
@@ -41,6 +42,11 @@ public class ItemDataBase : MonoBehaviour
         {
             string[] row = line[i].Split('\t');            
             AllitemList.Add(new Item(row[0], int.Parse(row[1]), int.Parse(row[2]), row[3], _ItemCategory));
+        }
+        isdone++;
+        if(isdone==6)
+        {
+            UserData.instance.LoadMyPurchasedItems();
         }
     }
 }

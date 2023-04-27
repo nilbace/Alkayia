@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StoreSection : MonoBehaviour
 {
+    public static StoreSection instance;
     [SerializeField]GameObject ItemListpopup;
     St_Popup st_Popup;
+    int myMoney;
+    [SerializeField] TMP_Text MyGoldText;
+    private void Awake() {
+        instance = this;
+    }
     private void Start() {
         ItemListpopup.transform.localPosition = new Vector3(0,100f,0);
         ItemListpopup.SetActive(false);
@@ -49,4 +56,10 @@ public class StoreSection : MonoBehaviour
         }
     }
 
+
+    public void SetGoldText()
+    {
+        myMoney = UserData.instance.mySaveData.myMoney;
+        MyGoldText.text = myMoney.ToString();
+    }
 }
