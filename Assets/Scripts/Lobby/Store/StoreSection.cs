@@ -19,43 +19,34 @@ public class StoreSection : MonoBehaviour
         {
             case "Amplifier":
             ItemListpopup.SetActive(true);
-            st_Popup.setName("증폭구");
+            st_Popup.Set_PopUp("증폭구", Define.ItemCategory.Amplifier);
             break;
 
             case "Necklace":
             ItemListpopup.SetActive(true);
-            st_Popup.setName("목걸이");
+            st_Popup.Set_PopUp("목걸이", Define.ItemCategory.Necklace);
             break;
 
             case "Bracelet":
             ItemListpopup.SetActive(true);
-            st_Popup.setName("팔찌");
+            st_Popup.Set_PopUp("팔찌", Define.ItemCategory.Bracelet);
             break;
 
             case "Earrings":
             ItemListpopup.SetActive(true);
-            st_Popup.setName("귀걸이");
+            st_Popup.Set_PopUp("귀걸이", Define.ItemCategory.Earrings);
             break;
 
             case "Destroy":
             ItemListpopup.SetActive(true);
-            st_Popup.setName("파괴석");
+            st_Popup.Set_PopUp("파괴석", Define.ItemCategory.Destroy);
             break;
 
             case "Balance":
             ItemListpopup.SetActive(true);
-            st_Popup.setName("조화석");
-            break;
-
-
-
-            default:
+            st_Popup.Set_PopUp("조화석", Define.ItemCategory.Balance);
             break;
         }
     }
 
-    public void closePopup()
-    {
-        ItemListpopup.SetActive(false);
-    }
 }

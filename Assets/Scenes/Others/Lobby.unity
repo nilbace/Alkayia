@@ -378,62 +378,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42400891}
   m_CullTransparentMesh: 1
---- !u!1 &91587359
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 91587361}
-  - component: {fileID: 91587360}
-  - component: {fileID: 91587362}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &91587360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91587359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af0eb0c383d098439598f5675aca129, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &91587361
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91587359}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.068775, y: -0.02410344, z: -175.21489}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &91587362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91587359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4efad698b51b04418e8024154aa6565, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &97309005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3609,7 +3553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySaveData:
     Data_learnedSkill: 7
-    int_conqueredMonster: 5
+    int_conqueredMonster: 3
 --- !u!4 &933270851
 Transform:
   m_ObjectHideFlags: 0
@@ -3650,7 +3594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4726518710de6494788ee65227c8341f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllitemList: []
 --- !u!1 &955105112
 GameObject:
   m_ObjectHideFlags: 0
@@ -5590,9 +5533,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CateName: {fileID: 452162562}
-  Item: {fileID: 1083220341309992087, guid: 784da8f401e65a04c9b4ece74f40c50b, type: 3}
+  ItemPrefab: {fileID: 1083220341309992087, guid: 784da8f401e65a04c9b4ece74f40c50b, type: 3}
   content: {fileID: 1939217964}
-  itemsOnPopup: []
 --- !u!1 &1572962891
 GameObject:
   m_ObjectHideFlags: 0
@@ -6376,10 +6318,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1061642777}
-        m_TargetAssemblyTypeName: StoreSection, Assembly-CSharp
-        m_MethodName: closePopup
-        m_Mode: 1
+      - m_Target: {fileID: 1536524317}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

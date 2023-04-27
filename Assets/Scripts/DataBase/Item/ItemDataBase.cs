@@ -6,18 +6,27 @@ using UnityEngine.Networking;
 
 public class ItemDataBase : MonoBehaviour
 {
-    public List<Item> AllitemList = new List<Item>();
+    public static List<Item> AllitemList = new List<Item>();
 
     #region Url About Items
     const string AmpUrl  = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&range=A2:D";
     const string NeckUrl = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&gid=1192668254&range=A2:D";
+    const string BraceUrl  = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&gid=917788105&range=A2:D";
     const string EarUrl  = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&gid=1753661311&range=A2:D";
+    const string DesUrl  = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&gid=783504121&range=A2:D";
+    const string BalUrl  = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&gid=470343613&range=A2:D";
+
+
     #endregion
 
     private void Start() {
+        AllitemList.Clear();
         StartCoroutine(sendRequestAndSaveItem(AmpUrl,  ItemCategory.Amplifier));
         StartCoroutine(sendRequestAndSaveItem(NeckUrl, ItemCategory.Necklace));
+        StartCoroutine(sendRequestAndSaveItem(BraceUrl,ItemCategory.Bracelet));
         StartCoroutine(sendRequestAndSaveItem(EarUrl,  ItemCategory.Earrings));
+        StartCoroutine(sendRequestAndSaveItem(DesUrl,  ItemCategory.Destroy));
+        StartCoroutine(sendRequestAndSaveItem(BalUrl,  ItemCategory.Balance));
     }
     
     IEnumerator sendRequestAndSaveItem(string Url, ItemCategory _ItemCategory)
