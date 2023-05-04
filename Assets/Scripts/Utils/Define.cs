@@ -36,4 +36,19 @@ public class Define
             this.image = Resources.Load<Sprite>(temp);
         }
     }
+
+    [System.Serializable]
+    public class SkillVersionData{
+        public int skillIndex;
+        public string skillName;
+        public bool hasProperty;
+        public bool hasFirstProperty;
+
+        public SkillVersionData(){
+            this.skillIndex = -1;
+            this.skillName = "Nothing";
+            this.hasProperty = false;
+            this.hasFirstProperty = true;
+        }
+    }
 }

@@ -16,7 +16,6 @@ public class MonsterInfo : MonoBehaviour
     }
 
     private void Start() {
-        transform.position = Vector3.zero;
         gameObject.SetActive(false);
     }
     public static void OpenInfoPopup(Monster monster)

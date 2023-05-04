@@ -35,18 +35,26 @@ public class ItemDataBase : MonoBehaviour
         UnityWebRequest www = UnityWebRequest.Get(Url);
         yield return www.SendWebRequest();
 
-        //Data parsing
-        string data = www.downloadHandler.text;
-        string[] line = data.Substring(0, data.Length - 1).Split('\n');
-        for (int i = 0; i < line.Length; i++)
+        if(www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
         {
-            string[] row = line[i].Split('\t');            
-            AllitemList.Add(new Item(row[0], int.Parse(row[1]), int.Parse(row[2]), row[3], _ItemCategory));
+            Debug.Log("Error!");
         }
-        isdone++;
-        if(isdone==6)
+
+        else
         {
-            UserData.instance.LoadMyPurchasedItems();
+            //Data parsing
+            string data = www.downloadHandler.text;
+            string[] line = data.Substring(0, data.Length - 1).Split('\n');
+            for (int i = 0; i < line.Length; i++)
+            {
+                string[] row = line[i].Split('\t');            
+                AllitemList.Add(new Item(row[0], int.Parse(row[1]), int.Parse(row[2]), row[3], _ItemCategory));
+            }
+            isdone++;
+            if(isdone==6)
+            {
+                UserData.instance.LoadMyPurchasedItems();
+            }
         }
     }
 }
