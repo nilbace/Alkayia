@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myControllers:
-  - {fileID: 0}
+  - {fileID: 9100000, guid: e0cdf088769cd1d4ab6874b0cab9cf5f, type: 2}
   - {fileID: 9100000, guid: e0cdf088769cd1d4ab6874b0cab9cf5f, type: 2}
   - {fileID: 0}
 --- !u!95 &8892377225323073919

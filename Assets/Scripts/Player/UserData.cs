@@ -11,16 +11,22 @@ public class UserData : MonoBehaviour
     public static UserData instance;
     public SaveData mySaveData;
     public List<Item> My_purchased_items = new List<Item>();
-    public List<Item> Now_Equip_items = new List<Item>();
+    public MyEquipItems myEquipItems = new MyEquipItems();
+    [SerializeField] Monster SelectedMonster;
     
 private void Awake() {
-    instance = this;
+    if (null == instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     LoadPlayerDatafromJson();
 }
 
-    private void Start() {
-        StoreSection.instance.SetGoldText();
-    }
 
     [ContextMenu("데이터 저장")]
     public void SavePlayerDataToJson()
@@ -78,25 +84,61 @@ private void Awake() {
         public AlkayiaSkill Data_learnedSkill;
         public int int_conqueredMonster;
         public List<int> Purchased_Equipments_index;
+        public List<int> equiping_Equipments_index;
         public int myMoney;
 
-        public SaveData(AlkayiaSkill data_learnedSkill = AlkayiaSkill.IceNeedle, int conqueredmonster = 0, List<int> indexList = null)
+        public SaveData(AlkayiaSkill data_learnedSkill = AlkayiaSkill.IceNeedle, int conqueredmonster = 0)
         {
             Data_learnedSkill = data_learnedSkill;
             int_conqueredMonster = conqueredmonster;
-            Purchased_Equipments_index = indexList;
+            Purchased_Equipments_index = null;
+            equiping_Equipments_index = null;
             myMoney = 0;
         }
     }
 
-    public void LoadMyPurchasedItems()
+    public void LoadMyItems()
     {    
         foreach (Item item in ItemDataBase.AllitemList)
         {
+            #region My Items in Inventory
             if(mySaveData.Purchased_Equipments_index.Contains(item.ItemIndex))
             {
                 My_purchased_items.Add(item);
             }
-        }
+            #endregion
+
+            #region 현재 내 장비 저장
+            if(mySaveData.equiping_Equipments_index.Contains(item.ItemIndex))
+            {
+                switch (item.itemCategory)
+                {
+                    case ItemCategory.Amplifier:
+                        myEquipItems.EquipedAmplifier = item;
+                        break;
+                    case ItemCategory.Necklace:
+                        myEquipItems.EquipedNecklace = item;
+                        break;
+                    case ItemCategory.Bracelet:
+                        myEquipItems.EquipedBracelet = item;
+                        break;
+                    case ItemCategory.Earrings:
+                        myEquipItems.EquipedEarrings = item;
+                        break;
+                    case ItemCategory.Balance:
+                        myEquipItems.EquipedBalance = item;
+                        break;
+                    default:
+                        myEquipItems.EquipedDestroy = item;
+                        break;
+                }
+            }
+            #endregion
+        }  
+    }
+
+    public void SetMonster(Monster monster)
+    {
+        SelectedMonster = monster;
     }
 }

@@ -51,4 +51,29 @@ public class Define
             this.hasFirstProperty = true;
         }
     }
+
+[System.Serializable]
+    public class MyEquipItems{
+        public Item EquipedAmplifier;
+        public Item EquipedNecklace;
+        public Item EquipedBracelet;
+        public Item EquipedEarrings;
+        public Item EquipedDestroy;
+        public Item EquipedBalance;
+        public BoardSize myboardSize = BoardSize.Size4_4;
+
+        public MyEquipItems()
+        {
+            EquipedAmplifier=null;
+            EquipedBalance=null;
+            EquipedBracelet=null;
+            EquipedDestroy=null;
+            EquipedEarrings=null;
+            EquipedNecklace=null;
+        }
+    }
+
+    public enum BoardSize{
+        Size4_4, Size5_5, Size6_6
+    };
 }

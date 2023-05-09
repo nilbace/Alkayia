@@ -7,11 +7,13 @@ public class QuestList : MonoBehaviour
     public Image BackGround;
     public TMP_Text QuestGrade;
     public TMP_Text QuestName;
+    public Monster thisQuestMonster;
     public int ThisQuestMonsterIndex;
 
     public void SetQuest(int monIndex)
     {
         ThisQuestMonsterIndex = monIndex;
+        thisQuestMonster = DataParsingMachine.Inst.AllMonList[monIndex];
         QuestName.text = DataParsingMachine.Inst.AllMonList[monIndex].name + " 토벌";
         if(monIndex == UserData.instance.mySaveData.int_conqueredMonster+1)
         {
@@ -28,5 +30,6 @@ public class QuestList : MonoBehaviour
     public void StartQuest()
     {
         MonsterInfo.OpenInfoPopup(DataParsingMachine.Inst.AllMonList[(int)ThisQuestMonsterIndex]);
+        UserData.instance.SetMonster(thisQuestMonster);
     }
 }

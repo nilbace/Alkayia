@@ -83,4 +83,9 @@ public class LobbyUIManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
+
+    public void StartHunt()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("BattleScene");
+    }
 }

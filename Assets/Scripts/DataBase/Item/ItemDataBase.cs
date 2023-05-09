@@ -53,7 +53,7 @@ public class ItemDataBase : MonoBehaviour
             isdone++;
             if(isdone==6)
             {
-                UserData.instance.LoadMyPurchasedItems();
+                UserData.instance.LoadMyItems();
             }
         }
     }

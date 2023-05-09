@@ -12,22 +12,6 @@ public class Moving : MonoBehaviour
     private void Start() {
         startpoz = BattleManager.instance.Zero_ZeroPoz;
         tilespacing = BattleManager.instance.Tilespacing;
-
-        switch(EquipDatas.instance.boardSize)
-        {
-            case EquipDatas.BoardSize.Size4_4 :
-            break;
-
-            case EquipDatas.BoardSize.Size5_5 :
-            break;
-
-            case EquipDatas.BoardSize.Size6_6 :
-            break;
-
-            default :
-            print("bug");
-            break;
-        }
     }
     void Update()
     {

@@ -19,8 +19,5 @@ public class SkillTreeManager : MonoBehaviour{
         gameObject.SetActive(false);
     }
 
-    public void StartHunt()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("BattleScene");
-    }
+    
 }

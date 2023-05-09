@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Define;
 
 public class BattleManager : MonoBehaviour
 {
@@ -35,21 +36,21 @@ public class BattleManager : MonoBehaviour
     }
     void Start()
     {
-        switch(EquipDatas.instance.boardSize)
+        switch(UserData.instance.myEquipItems.myboardSize)
         {
-            case EquipDatas.BoardSize.Size4_4 :
+            case BoardSize.Size4_4 :
             BoardImage.sprite = Resources.Load<Sprite>("Temps/4_4");
-            InitalizeBoard((int)EquipDatas.instance.boardSize);
+            InitalizeBoard((int)BoardSize.Size4_4);
             break;
 
-            case EquipDatas.BoardSize.Size5_5 :
+            case BoardSize.Size5_5 :
             BoardImage.sprite = Resources.Load<Sprite>("Temps/5_5");
-            InitalizeBoard((int)EquipDatas.instance.boardSize);
+            InitalizeBoard((int)BoardSize.Size5_5);
             break;
 
-            case EquipDatas.BoardSize.Size6_6 :
+            case BoardSize.Size6_6 :
             BoardImage.sprite = Resources.Load<Sprite>("Temps/6_6");
-            InitalizeBoard((int)EquipDatas.instance.boardSize);
+            InitalizeBoard((int)BoardSize.Size6_6);
             break;
         }
         Spawn();
@@ -141,21 +142,21 @@ public class BattleManager : MonoBehaviour
     {
         switch(size)
         {
-            case (int)EquipDatas.BoardSize.Size4_4:
+            case (int)BoardSize.Size4_4:
             int_BoardSize = 4;
             Zero_ZeroPoz = new Vector2 (-1.92f, -2.51f);
             Tilespacing = 1.3f;
             Square = new GameObject[int_BoardSize+1,int_BoardSize+1];
             break;
 
-            case (int)EquipDatas.BoardSize.Size5_5:
+            case (int)BoardSize.Size5_5:
             int_BoardSize = 5;
             Zero_ZeroPoz = new Vector2 (-2.059f, -2.655f);
             Tilespacing = 1.01f;
             Square = new GameObject[int_BoardSize+1,int_BoardSize+1];
             break;
 
-            case (int)EquipDatas.BoardSize.Size6_6:
+            case (int)BoardSize.Size6_6:
             int_BoardSize = 6;
             Zero_ZeroPoz = new Vector2 (-2.12f, -2.72f);
             Tilespacing = 0.83f;
