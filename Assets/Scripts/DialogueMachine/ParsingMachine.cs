@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Collections;
+using static Define;
 
 public class ParsingMachine : MonoBehaviour
 {
-    public enum CharName {
-        Alkayia, Nadira, Lyra, Siro
-    };
+    
     public List<Sprite> CharImage = new List<Sprite>();
 
     public static ParsingMachine instance;

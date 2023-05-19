@@ -21,7 +21,7 @@ public class St_Popup : MonoBehaviour
     void fillItems(ItemCategory _ItemCategory)
     {
         DestroyAllChildren(content);
-        foreach(Item item in ItemDataBase.AllitemList)
+        foreach(Item item in Managers.Data.AllitemList)
         {
             if(item.itemCategory == _ItemCategory)
                 {

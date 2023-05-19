@@ -75,5 +75,37 @@ public class Define
 
     public enum BoardSize{
         Size4_4, Size5_5, Size6_6
+    }
+
+    public enum Scene
+    {
+        Unknown,
+        Login,
+        Lobby,
+        Game,
+    }
+
+    public enum Sound
+    {
+        Bgm,
+        Effect,
+        MaxCount,
+    }
+    public enum UIEvent
+    {
+        Click,
+        Drag,
+        
+    }
+    public enum MouseEvent{
+        Press,
+        Click,
+    }
+    public enum CameraMode{
+        QuaterView,
+    }
+
+    public enum CharName {
+        Alkayia, Nadira, Lyra, Siro
     };
 }

@@ -99,7 +99,7 @@ private void Awake() {
 
     public void LoadMyItems()
     {    
-        foreach (Item item in ItemDataBase.AllitemList)
+        foreach (Item item in Managers.Data.AllitemList)
         {
             #region My Items in Inventory
             if(mySaveData.Purchased_Equipments_index.Contains(item.ItemIndex))
