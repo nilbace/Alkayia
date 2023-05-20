@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LobbyScene : MonoBehaviour
+public class LobbyScene : BaseScene
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Init()
     {
-        
+        base.Init();
+        SceneType = Define.Scene.Lobby;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Clear()
     {
         
     }

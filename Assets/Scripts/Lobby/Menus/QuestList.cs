@@ -29,7 +29,7 @@ public class QuestList : MonoBehaviour
 
     public void StartQuest()
     {
-        MonsterInfo.OpenInfoPopup(DataParsingMachine.Inst.AllMonList[(int)ThisQuestMonsterIndex]);
+        Managers.UI.ShowPopupUI<UI_MonsterInfoPopup>();
         UserData.instance.SetMonster(thisQuestMonster);
     }
 }

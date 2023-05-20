@@ -11,7 +11,6 @@ public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("eventData");
         if(OnDragHandler != null)
             OnDragHandler.Invoke(eventData);
     }

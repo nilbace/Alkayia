@@ -74,6 +74,6 @@ public abstract class UI_Base : MonoBehaviour
                 break;
         }
 
-        evt.OnDragHandler += ((PointerEventData data) => { evt.gameObject.transform.position = data.position; });
+        //evt.OnDragHandler += ((PointerEventData data) => { evt.gameObject.transform.position = data.position; });
     }
 }
