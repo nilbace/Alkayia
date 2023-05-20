@@ -23,9 +23,11 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField] float moveTime;
     [SerializeField] float elasticScale;
     [SerializeField] float periodScale;
+    [SerializeField] Material[] textmaterial = new Material[2];
     void Start()
     {
         CreateQuestList();
+        PressUIButtion(2);
     }
 
     void Update()
@@ -53,7 +55,32 @@ public class LobbyUIManager : MonoBehaviour
         for(int i = 0; i<5;i++)
         {
             sectionButtons[i].interactable = i==index ? false : true;
+            
+            Image childImage = sectionButtons[i].transform.GetChild(1).GetComponent<Image>();
+            Image childImage2 = sectionButtons[i].transform.GetChild(2).GetComponent<Image>();
+            TMPro.TMP_Text sectext = sectionButtons[i].transform.GetChild(2).GetChild(0).GetComponent<TMPro.TMP_Text>();
+            if(i == index)
+            {
+                Color temp = childImage.color;
+                temp.a = 1f;
+                childImage.color = temp;
+                childImage2.color = sectionButtons[i].colors.highlightedColor;
+                sectext.fontMaterial = textmaterial[1];
+            }
+
+            else
+            {
+                Color temp = childImage.color;
+                temp.r = 0.8f;
+                temp.g = 0.8f;
+                temp.b = 0.8f;
+                temp.a = 0.7f;
+                childImage.color = temp;
+                childImage2.color = sectionButtons[i].colors.normalColor;
+                sectext.fontMaterial = textmaterial[0];
+            }
         }
+        
     }
 
     public void RequestButton()
