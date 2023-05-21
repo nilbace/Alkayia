@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class MonsterParser : MonoBehaviour
 {
-    IEnumerator sendRequestAndSaveItem(string Url, ItemCategory _ItemCategory)
+    IEnumerator sendRequestAndSaveItem(string Url)
     {
         UnityWebRequest www = UnityWebRequest.Get(Url);
         yield return www.SendWebRequest();
@@ -24,16 +24,20 @@ public class MonsterParser : MonoBehaviour
             for (int i = 0; i < line.Length; i++)
             {
                 string[] row = line[i].Split('\t');            
-                Managers.Data.AllitemList.Add(new Item(row[0], int.Parse(row[1]), int.Parse(row[2]), row[3], _ItemCategory));
+                Managers.Data.AllMonsterList.Add(row[0] ,new Monster(row[0], int.Parse(row[1]), int.Parse(row[2]), int.Parse(row[3]),  row[4], i, row[5] ));
             }
         }
     }
 
-    const string AmpUrl  = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&range=A2:D";
+    const string MonstersURL  = "https://docs.google.com/spreadsheets/d/1vtg02MKZum53xIGW9G9MQ2L238bLSO-kVIpJJhbR22Y/export?format=tsv&range=A2:FD";
     
     
     public void Init()
     {
-        StartCoroutine(sendRequestAndSaveItem(AmpUrl,  ItemCategory.Amplifier));
+        StartCoroutine(sendRequestAndSaveItem(MonstersURL));
+    }
+
+    private void Start() {
+        Init();
     }
 }

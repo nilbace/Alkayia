@@ -54,4 +54,8 @@ public class ItemParser : MonoBehaviour
         StartCoroutine(sendRequestAndSaveItem(DesUrl,  ItemCategory.Destroy));
         StartCoroutine(sendRequestAndSaveItem(BalUrl,  ItemCategory.Balance));
     }
+
+    private void Start() {
+        Init();
+    }
 }

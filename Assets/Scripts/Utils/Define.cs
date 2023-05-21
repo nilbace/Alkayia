@@ -52,7 +52,7 @@ public class Define
         }
     }
 
-[System.Serializable]
+    [System.Serializable]
     public class MyEquipItems{
         public Item EquipedAmplifier;
         public Item EquipedNecklace;
@@ -75,6 +75,33 @@ public class Define
 
     public enum BoardSize{
         Size4_4, Size5_5, Size6_6
+    }
+
+    [System.Serializable]
+    public class Monster{
+    public string name;
+    public int Monsterindex;
+    public int attackPower;
+    public int attackTerm;
+    public int HP;
+    public string boardExplanation;
+    public string AlkayiaTip;
+
+    public Monster(string name = "몬스떠!", int attackPower = 5, int attackTerm = 5, int hP = 30, string boardExplanation = "이게 보이면 안된다!",int monindex = 0, string _alktip = "")
+        {
+            this.name = name;
+            this.attackPower = attackPower;
+            this.attackTerm = attackTerm;
+            HP = hP;
+            this.boardExplanation = boardExplanation;
+            this.Monsterindex = monindex;
+            this.AlkayiaTip = _alktip;
+        }
+
+    public void printThis()
+    {
+        Debug.Log(this.name); Debug.Log(this.boardExplanation); Debug.Log(this.AlkayiaTip); 
+    }
     }
 
     public enum Scene

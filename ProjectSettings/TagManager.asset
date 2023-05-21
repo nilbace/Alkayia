@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Combine
+  - MainScene
+  - MainUI
   layers:
   - Default
   - TransparentFX

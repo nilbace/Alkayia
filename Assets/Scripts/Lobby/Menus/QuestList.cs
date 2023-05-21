@@ -13,8 +13,8 @@ public class QuestList : MonoBehaviour
     public void SetQuest(int monIndex)
     {
         ThisQuestMonsterIndex = monIndex;
-        thisQuestMonster = DataParsingMachine.Inst.AllMonList[monIndex];
-        QuestName.text = DataParsingMachine.Inst.AllMonList[monIndex].name + " 토벌";
+        //thisQuestMonster = DataParsingMachine.Inst.AllMonList[monIndex];
+        //QuestName.text = DataParsingMachine.Inst.AllMonList[monIndex].name + " 토벌";
         if(monIndex == UserData.instance.mySaveData.int_conqueredMonster+1)
         {
             BackGround.color = Color.yellow;
