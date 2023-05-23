@@ -136,9 +136,4 @@ private void Awake() {
             #endregion
         }  
     }
-
-    public void SetMonster(Monster monster)
-    {
-        SelectedMonster = monster;
-    }
 }

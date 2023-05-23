@@ -63,9 +63,6 @@ public class ParsingMachine : MonoBehaviour
                 tempdia.Portrait = CharImage[(int)CharName.Lyra];
                 break;
 
-                case "Siro":
-                tempdia.Portrait = CharImage[(int)CharName.Siro];
-                break;
             }
             listDia.Add(tempdia);
         }

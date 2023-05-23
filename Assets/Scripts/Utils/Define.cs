@@ -87,7 +87,7 @@ public class Define
     public string boardExplanation;
     public string AlkayiaTip;
 
-    public Monster(string name = "몬스떠!", int attackPower = 5, int attackTerm = 5, int hP = 30, string boardExplanation = "이게 보이면 안된다!",int monindex = 0, string _alktip = "")
+    public Monster(string name = "몬스터!", int attackPower = 5, int attackTerm = 5, int hP = 30, string boardExplanation = "이게 보이면 안된다!",int monindex = 0, string _alktip = "")
         {
             this.name = name;
             this.attackPower = attackPower;
@@ -97,11 +97,6 @@ public class Define
             this.Monsterindex = monindex;
             this.AlkayiaTip = _alktip;
         }
-
-    public void printThis()
-    {
-        Debug.Log(this.name); Debug.Log(this.boardExplanation); Debug.Log(this.AlkayiaTip); 
-    }
     }
 
     public enum Scene
@@ -133,6 +128,6 @@ public class Define
     }
 
     public enum CharName {
-        Alkayia, Nadira, Lyra, Siro
+        Lydia , Alkayia, Nadira, Lyra, 
     };
 }

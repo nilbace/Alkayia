@@ -7,12 +7,13 @@ using UnityEngine.EventSystems;
 
 public class UI_MySkillPopup : UI_Popup
 {
+    bool isInited = false;
     enum Buttons{
         HuntBTN,
         CloseBTN
     }
     enum Texts{
-        
+        AlkTip
     }
 
     enum Images
@@ -25,12 +26,19 @@ public class UI_MySkillPopup : UI_Popup
     }
     private void Start() {
         Init();
+        OnEnable();
     }
+
+    private void OnEnable() {
+        if(isInited)
+            GetText((int)Texts.AlkTip).text = Managers.Data.ThisQuestMonster.AlkayiaTip;
+    }
+
     public override void Init()
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
-        //Bind<TMP_Text>(typeof(Texts));
+        Bind<TMP_Text>(typeof(Texts));
         //Bind<Image>(typeof(Images));
         Bind<GameObject>(typeof(GameObjects));
         
@@ -51,6 +59,7 @@ public class UI_MySkillPopup : UI_Popup
             //invenItem.SetInfo($"장신구{i}번");
             //아이콘 정보 셋팅
         }
+        isInited = true;
     }
 
     public void Hunt(PointerEventData data)
@@ -63,4 +72,5 @@ public class UI_MySkillPopup : UI_Popup
         Managers.UI.ClosePopupUI();
         Managers.UI.ClosePopupUI();
     }
+    
 }

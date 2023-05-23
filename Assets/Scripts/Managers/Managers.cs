@@ -15,6 +15,7 @@ public class Managers : MonoBehaviour
     SoundManager _sound = new SoundManager();
     PoolManager _pool = new PoolManager();
     DataManager _data = new DataManager();
+    BattleDataManager _battledata = new BattleDataManager();
     public static InputManager Input {get {return instance._input;}}
     public static ResourceManager Resource{get{return instance._resource;}}
     public static UI_Manager UI{get{return instance._ui_manager;}}
@@ -22,6 +23,7 @@ public class Managers : MonoBehaviour
     public static SoundManager Sound{get{return instance._sound;}}
     public static PoolManager Pool{get{return instance._pool;}}
     public static DataManager Data{get {return instance._data;}}
+    public static BattleDataManager BattleData{get {return instance._battledata;}}
     
     void Start()
     {
