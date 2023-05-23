@@ -8,5 +8,7 @@ using System;
 public class DataManager
 {
     public List<Define.Item> AllitemList = new List<Define.Item>();
-    public Dictionary<string, Monster> AllMonsterList = new Dictionary<string, Monster>();
+    public List<Define.Monster> AllMonsterList = new List<Monster>();
+    public Define.Monster ThisQuestMonster = null;
+    
 }

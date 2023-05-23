@@ -22,8 +22,15 @@ public class UI_MonsterInfoPopup : UI_Popup
         parchmentImg,
         MonPortrait
     }
+    bool isInited = false;
+
+    private void OnEnable() {
+        if(isInited)
+            SetInfo();
+    }
     private void Start() {
         Init();
+        OnEnable();
     }
     public override void Init()
     {
@@ -34,8 +41,7 @@ public class UI_MonsterInfoPopup : UI_Popup
         
         GetButton((int)Buttons.HuntBTN).gameObject.AddUIEvent(Hunt);
         GetButton((int)Buttons.CloseBTN).gameObject.AddUIEvent(Close);
-
-        
+        isInited = true;
     }
 
     public void Hunt(PointerEventData data)
@@ -46,5 +52,13 @@ public class UI_MonsterInfoPopup : UI_Popup
     public void Close(PointerEventData data)
     {
         Managers.UI.ClosePopupUI();
+    }
+
+    void SetInfo()
+    {
+        Define.Monster temp = Managers.Data.ThisQuestMonster;
+        GetText((int)Texts.InfoTMP).text = temp.boardExplanation;
+        GetText((int)Texts.MonNameTMP).text = temp.name;
+        //GetImage((int)Images.MonPortrait).sprite = 
     }
 }

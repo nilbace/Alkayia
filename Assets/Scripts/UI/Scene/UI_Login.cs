@@ -26,10 +26,11 @@ public class UI_Login : UI_Scene
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
-        Bind<TMP_Text>(typeof(Texts));
+        Bind<TMP_Text>(typeof(Texts));  
 
-        GetButton((int)Buttons.BtnGameStart).gameObject.AddUIEvent(StartGame, Define.UIEvent.Drag);
+        GetButton((int)Buttons.BtnGameStart).gameObject.AddUIEvent(StartGame);
     }
+
 
     public void StartGame(PointerEventData data)
     {

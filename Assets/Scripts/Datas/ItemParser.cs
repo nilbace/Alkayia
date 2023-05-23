@@ -57,5 +57,6 @@ public class ItemParser : MonoBehaviour
 
     private void Start() {
         Init();
+        DontDestroyOnLoad(gameObject);
     }
 }

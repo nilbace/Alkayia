@@ -44,8 +44,10 @@ public class LobbyUIManager : UI_Scene
     {
         for(int i = UserData.instance.mySaveData.int_conqueredMonster+1; i >0 ; i--)
             {
-                GameObject listObject = Instantiate(QuestList, Vector3.up, Quaternion.identity, ContentParent);
-                listObject.GetComponent<QuestList>().SetQuest(i);
+                GameObject listObject = Instantiate(QuestList, ContentParent);
+                Define.Monster temp = Managers.Data.AllMonsterList[i];
+                bool isthisMain = i==(UserData.instance.mySaveData.int_conqueredMonster+1);
+                listObject.GetOrAddComponent<UI_QuestList>().Setinfo(isthisMain, temp);
             }
     }
 
