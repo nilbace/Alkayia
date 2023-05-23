@@ -18,6 +18,7 @@ public class MonsterParser : MonoBehaviour
 
         else
         {
+            Managers.Data.AllMonsterList.Clear();
             //Data parsing
             string data = www.downloadHandler.text;
             string[] line = data.Substring(0, data.Length - 1).Split('\n');

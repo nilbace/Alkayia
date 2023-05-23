@@ -36,6 +36,21 @@ public class UI_MySkillPopup : UI_Popup
         
         GetButton((int)Buttons.HuntBTN).gameObject.AddUIEvent(Hunt);
         GetButton((int)Buttons.CloseBTN).gameObject.AddUIEvent(Close);
+
+        Transform Content = Get<GameObject>((int)GameObjects.SkillScrollView).transform.GetChild(0).GetChild(0);
+
+        foreach(Transform child in Content.transform)
+            Managers.Resource.Destroy(child.gameObject);
+
+
+        for(int i = 0; i<5;i++)
+        {
+            GameObject item = Managers.UI.MakeSubItem<UI_OneSkillTree>(Content.transform).gameObject;
+            UI_OneSkillTree invenItem = item.GetOrAddComponent<UI_OneSkillTree>();
+            
+            //invenItem.SetInfo($"장신구{i}번");
+            //아이콘 정보 셋팅
+        }
     }
 
     public void Hunt(PointerEventData data)
@@ -45,6 +60,7 @@ public class UI_MySkillPopup : UI_Popup
 
     public void Close(PointerEventData data)
     {
+        Managers.UI.ClosePopupUI();
         Managers.UI.ClosePopupUI();
     }
 }

@@ -5,19 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class LoginScene : BaseScene
 {
+    private void Start() {
+        Init();
+    }
     protected override void Init()
     {
         base.Init();
         SceneType = Define.Scene.Login;
 
+        Managers.UI.ShowSceneUI<UI_Login>();
     }
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            Managers.Scene.LoadScene(Define.Scene.BattleScene);
-        }
-    }
+   
     public override void Clear()
     {
         

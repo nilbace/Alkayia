@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class LobbyUIManager : MonoBehaviour
+public class LobbyUIManager : UI_Scene
 {
     [Header("BackgroundImage")]
     [SerializeField] float backImageMoveTime;

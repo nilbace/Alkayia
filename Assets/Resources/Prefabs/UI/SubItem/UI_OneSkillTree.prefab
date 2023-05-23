@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3810198085577237006}
   - component: {fileID: 3280109754660046822}
   m_Layer: 5
-  m_Name: First
+  m_Name: FirstAtt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,19 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3810198085577237006}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3635986461938185994}
-        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
-        m_MethodName: ClickFirstProperty
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &6794163330357922392
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,9 +473,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7201437540381127712}
-  - component: {fileID: 3635986461938185994}
   m_Layer: 5
-  m_Name: Tree1
+  m_Name: UI_OneSkillTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,27 +502,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3635986461938185994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7201437540381127715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe46e37b7d1116488e83b566f815588, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThisSkillData:
-    skillIndex: -1
-    skillName: Nothing
-    hasProperty: 0
-    hasFirstProperty: 1
-  MainIcon: {fileID: 7201437539875164135}
-  FirstProperty: {fileID: 3810198085577237006}
-  SecondProperty: {fileID: 2676856711665673573}
-  SkillTreeScroll: {fileID: 0}
 --- !u!1 &7551555988356811277
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +515,7 @@ GameObject:
   - component: {fileID: 2676856711665673573}
   - component: {fileID: 2361246424982926069}
   m_Layer: 5
-  m_Name: Second
+  m_Name: SecondAtt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -656,16 +622,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2676856711665673573}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3635986461938185994}
-        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
-        m_MethodName: ChickSecondProperty
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
