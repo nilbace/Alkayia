@@ -27,9 +27,10 @@ public class ItemParser : MonoBehaviour
                 Managers.Data.AllitemList.Add(new Item(row[0], int.Parse(row[1]), int.Parse(row[2]), row[3], _ItemCategory));
             }
             isdone++;
-            if(isdone==6)
+            if(isdone==7)
             {
                 UserData.instance.LoadMyItems();
+                Managers.UI.ShowSceneUI<UI_Login>();
             }
         }
     }
@@ -41,8 +42,42 @@ public class ItemParser : MonoBehaviour
     const string DesUrl  = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&gid=783504121&range=A2:D";
     const string BalUrl  = "https://docs.google.com/spreadsheets/d/1M_lVqFwKkgKOZP22-Srb2nFUN3hk-RkFeA-Uox2bb1A/export?format=tsv&gid=470343613&range=A2:D";
 
-    
+    #region MonsterParsing
+    IEnumerator sendRequestAndSaveMon(string Url)
+    {
+        UnityWebRequest www = UnityWebRequest.Get(Url);
+        yield return www.SendWebRequest();
 
+        if(www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.Log("Error!");
+        }
+
+        
+        else
+        {
+            Managers.Data.AllMonsterList.Clear();
+            //Data parsing
+            string data = www.downloadHandler.text;
+            string[] line = data.Substring(0, data.Length - 1).Split('\n');
+            for (int i = 0; i < line.Length; i++)
+            {
+                string[] row = line[i].Split('\t');            
+                Managers.Data.AllMonsterList.Add(new Monster(row[0], int.Parse(row[1]), int.Parse(row[2]), int.Parse(row[3]),  row[4], i, row[5] ));
+            }
+
+            isdone++;
+            if(isdone==7)
+            {
+                UserData.instance.LoadMyItems();
+                Managers.UI.ShowSceneUI<UI_Login>();
+            }
+        }
+    }
+
+    const string MonstersURL  = "https://docs.google.com/spreadsheets/d/1vtg02MKZum53xIGW9G9MQ2L238bLSO-kVIpJJhbR22Y/export?format=tsv&range=A2:FD";
+    
+    #endregion
     
     
     public void Init()
@@ -53,6 +88,7 @@ public class ItemParser : MonoBehaviour
         StartCoroutine(sendRequestAndSaveItem(EarUrl,  ItemCategory.Earrings));
         StartCoroutine(sendRequestAndSaveItem(DesUrl,  ItemCategory.Destroy));
         StartCoroutine(sendRequestAndSaveItem(BalUrl,  ItemCategory.Balance));
+        StartCoroutine(sendRequestAndSaveMon(MonstersURL));
     }
 
     private void Start() {

@@ -72,7 +72,6 @@ private void Awake() {
         byte[] data = new byte[fileStream.Length];
         fileStream.Read(data, 0, data.Length);
         fileStream.Close();
-        print(fileStream.ToString());
         string jsonData = Encoding.UTF8.GetString(data);
 
         mySaveData = JsonUtility.FromJson<SaveData>(jsonData);
@@ -95,10 +94,19 @@ private void Awake() {
             equiping_Equipments_index = null;
             myMoney = 0;
         }
+
+        public void changeItem(ItemCategory itemCategory ,int index)
+        {
+            equiping_Equipments_index.Remove((int)itemCategory);
+            equiping_Equipments_index.Add(index);
+            equiping_Equipments_index.Sort();
+        }
     }
 
     public void LoadMyItems()
-    {    
+    {
+        mySaveData.Purchased_Equipments_index.Sort();
+        mySaveData.equiping_Equipments_index.Sort();  
         foreach (Item item in Managers.Data.AllitemList)
         {
             #region My Items in Inventory
