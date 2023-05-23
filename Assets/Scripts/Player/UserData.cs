@@ -97,9 +97,10 @@ private void Awake() {
 
         public void changeItem(ItemCategory itemCategory ,int index)
         {
-            equiping_Equipments_index.Remove((int)itemCategory);
+            equiping_Equipments_index.RemoveAt((int)itemCategory);
             equiping_Equipments_index.Add(index);
             equiping_Equipments_index.Sort();
+            UserData.instance.SavePlayerDataToJson();
         }
     }
 

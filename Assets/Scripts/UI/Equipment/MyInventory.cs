@@ -11,16 +11,23 @@ public class MyInventory : MonoBehaviour
     public Transform ContentParent;
     public GameObject ItemPrefab;
     List<Item> tempItemList = new List<Item>();
+    private void Start() {
+        for(int i=0;i<6;i++)
+        {
+            transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>().text = System.Enum.GetName(typeof(ItemCategory), (ItemCategory)i);
+        }
+    }
 
-    public void ShowMyItems(ItemCategory desiredCategory)
+    public void ShowMyItems(int index)
     {
+        ItemCategory desiredCategory = (ItemCategory)index;
         DeleteAllChildren(ContentParent);
         foreach (Item item in Managers.Data.AllitemList)
         {
             if (item.itemCategory == desiredCategory)
             {
                 tempItemList.Add(item);
-                GameObject go = Instantiate(gameObject, ContentParent);
+                GameObject go = Instantiate(ItemPrefab, ContentParent);
                 go.GetComponent<MyInvenItem>().SetItem(item);
             }
         }
