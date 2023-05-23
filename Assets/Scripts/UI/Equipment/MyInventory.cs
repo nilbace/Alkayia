@@ -7,11 +7,13 @@ using TMPro;
 
 public class MyInventory : MonoBehaviour
 {
+    public static MyInventory instance;
     //하단 아이템들 관리
     public Transform ContentParent;
     public GameObject ItemPrefab;
     List<Item> tempItemList = new List<Item>();
     private void Start() {
+        instance= this;
         for(int i=0;i<6;i++)
         {
             transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>().text = System.Enum.GetName(typeof(ItemCategory), (ItemCategory)i);
@@ -24,8 +26,9 @@ public class MyInventory : MonoBehaviour
         DeleteAllChildren(ContentParent);
         foreach (Item item in Managers.Data.AllitemList)
         {
-            if (item.itemCategory == desiredCategory)
+            if (item.itemCategory == desiredCategory && !UserData.instance.mySaveData.equiping_Equipments_index.Contains(item.ItemIndex))
             {
+                UserData.instance.mySaveData.equiping_Equipments_index.Sort();
                 tempItemList.Add(item);
                 GameObject go = Instantiate(ItemPrefab, ContentParent);
                 go.GetComponent<MyInvenItem>().SetItem(item);

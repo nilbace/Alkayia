@@ -21,8 +21,9 @@ public class MyInvenItem : MonoBehaviour
     }
     public void changItem()
     {
-        Define.ItemCategory tempcate = thisItem.itemCategory;
         UserData.instance.mySaveData.changeItem(thisItem.itemCategory, thisItem.ItemIndex);
-        print($"아이템이 {thisItem.ItemName} 으로 교체되었습니다");
+
+        //상점 갱신
+        MyInventory.instance.ShowMyItems((int)thisItem.itemCategory);
     }
 }
