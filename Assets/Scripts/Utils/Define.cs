@@ -60,7 +60,6 @@ public class Define
         public Item EquipedEarrings;
         public Item EquipedDestroy;
         public Item EquipedBalance;
-        public BoardSize myboardSize = BoardSize.Size4_4;
 
         public MyEquipItems()
         {
@@ -73,29 +72,54 @@ public class Define
         }
     }
 
+    public class LydiaStat{
+        [SerializeField]
+        int _attackPower;
+        public int AttackPower { get{return _attackPower;} set{ _attackPower = value;}}
+
+        [SerializeField]
+        int _hp;
+        public int HP {get { return _hp;} set { _hp = value;}}
+
+        [SerializeField]
+        int _attackTerm;
+        public int AttackTerm { get{return _attackTerm;} set{ _attackTerm = value;}}
+
+        [SerializeField]
+        BoardSize _myboardsize;
+        public BoardSize MyBoardSize { get { return _myboardsize;} set{ _myboardsize = value;}}
+
+        [SerializeField]
+        int _maxNum;
+        public int MaxNum { get{return _maxNum;} set{ _maxNum = value;}}
+    }
+
     public enum BoardSize{
         Size4_4, Size5_5, Size6_6
     }
 
     [System.Serializable]
     public class Monster{
-    public string name;
+    public string MonName;
     public int Monsterindex;
     public int attackPower;
     public int attackTerm;
     public int HP;
     public string boardExplanation;
     public string AlkayiaTip;
+    public Sprite image;
 
     public Monster(string name = "몬스터!", int attackPower = 5, int attackTerm = 5, int hP = 30, string boardExplanation = "이게 보이면 안된다!",int monindex = 0, string _alktip = "")
         {
-            this.name = name;
+            this.MonName = name;
             this.attackPower = attackPower;
             this.attackTerm = attackTerm;
             HP = hP;
             this.boardExplanation = boardExplanation;
             this.Monsterindex = monindex;
             this.AlkayiaTip = _alktip;
+            string temp = "Temps/Mon/" + MonName;
+            this.image = Resources.Load<Sprite>(temp);
         }
     }
 

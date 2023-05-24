@@ -10,8 +10,8 @@ public class Moving : MonoBehaviour
     float tilespacing;
     [SerializeField] RuntimeAnimatorController[] myControllers = new RuntimeAnimatorController[3];
     private void Start() {
-        startpoz = BattleManager.instance.Zero_ZeroPoz;
-        tilespacing = BattleManager.instance.Tilespacing;
+        startpoz = BoardManager.instance.Zero_ZeroPoz;
+        tilespacing = BoardManager.instance.Tilespacing;
     }
     void Update()
     {

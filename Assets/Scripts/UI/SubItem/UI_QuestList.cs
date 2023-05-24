@@ -37,7 +37,7 @@ public class UI_QuestList : UI_Base
 
     void SetthisQuest()
     {
-        MonsterName.text = _thisquestMon.name;
+        MonsterName.text = _thisquestMon.MonName;
         if(_isMainMon)
         {
             QuestType.text = "메인 퀘스트";

@@ -9,12 +9,7 @@ using static Define;
 public class UserData : MonoBehaviour
 {
     public static UserData instance;
-    public SaveData mySaveData;
-    public List<Item> My_purchased_items = new List<Item>();
-    public MyEquipItems myEquipItems = new MyEquipItems();
-    [SerializeField] Monster SelectedMonster;
-    
-private void Awake() {
+    private void Awake() {
     if (null == instance)
         {
             instance = this;
@@ -26,6 +21,12 @@ private void Awake() {
         }
     LoadPlayerDatafromJson();
 }
+
+    public SaveData mySaveData;
+    public List<Item> My_purchased_items = new List<Item>();
+    public MyEquipItems myEquipItems = new MyEquipItems();
+    
+
 
 
     [ContextMenu("데이터 저장")]
@@ -100,7 +101,8 @@ private void Awake() {
             equiping_Equipments_index.RemoveAt((int)itemCategory);
             equiping_Equipments_index.Add(index);
             equiping_Equipments_index.Sort();
-            UserData.instance.SavePlayerDataToJson();
+            UserData.instance.LoadMyItems();
+            UserData.instance.SavePlayerDataToJson(); 
         }
     }
 

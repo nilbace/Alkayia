@@ -58,7 +58,7 @@ public class UI_MonsterInfoPopup : UI_Popup
     {
         Define.Monster temp = Managers.Data.ThisQuestMonster;
         GetText((int)Texts.InfoTMP).text = temp.boardExplanation;
-        GetText((int)Texts.MonNameTMP).text = temp.name;
-        //GetImage((int)Images.MonPortrait).sprite = 
+        GetText((int)Texts.MonNameTMP).text = temp.MonName;
+        GetImage((int)Images.MonPortrait).sprite = temp.image;
     }
 }

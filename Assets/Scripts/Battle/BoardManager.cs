@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static Define;
 
-public class BattleManager : MonoBehaviour
+public class BoardManager : MonoBehaviour
 {
+    //사실 보드 매니저임
     public GameObject[] n;
     public GameObject Quit;
     [SerializeField] bool[] ShootIndex = new bool[17];
@@ -21,7 +22,7 @@ public class BattleManager : MonoBehaviour
 
     Vector3 firstPos, gap;
     bool wait, move, stop;
-    public static BattleManager instance;
+    public static BoardManager instance;
     void Awake()
     {
         if (null == instance)
@@ -34,9 +35,32 @@ public class BattleManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    void Start()
+
+    private void Start() {
+        switch(Managers.Data.LydiaStat.MyBoardSize)
+        {
+            case BoardSize.Size4_4 :
+            BoardImage.sprite = Resources.Load<Sprite>("Temps/4_4");
+            InitalizeBoard((int)BoardSize.Size4_4);
+            break;
+
+            case BoardSize.Size5_5 :
+            BoardImage.sprite = Resources.Load<Sprite>("Temps/5_5");
+            InitalizeBoard((int)BoardSize.Size5_5);
+            break;
+
+            case BoardSize.Size6_6 :
+            BoardImage.sprite = Resources.Load<Sprite>("Temps/6_6");
+            InitalizeBoard((int)BoardSize.Size6_6);
+            break;
+        }
+        Spawn();
+        Spawn();
+    }
+
+    public void Init()
     {
-        switch(UserData.instance.myEquipItems.myboardSize)
+        switch(Managers.Data.LydiaStat.MyBoardSize)
         {
             case BoardSize.Size4_4 :
             BoardImage.sprite = Resources.Load<Sprite>("Temps/4_4");
