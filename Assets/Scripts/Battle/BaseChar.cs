@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class BaseChar : MonoBehaviour
 {
-    protected int _maxHP;
-    protected int _nowHP;
+    [SerializeField]protected int _maxHP;
+    [SerializeField]protected int _nowHP = 98574;
+    [SerializeField]protected bool _isAlive = true;
 
     public float _attackTerm = 3f;
-    protected int _attackPower;
+    [SerializeField]protected int _attackPower;
 
 
     protected virtual void Update()
     {
-        if(_nowHP<=0)
+        if( _nowHP != 98574 && _nowHP<=0 && _isAlive)
+        {
+            _isAlive = false;
             CharacterDead();
+        }
     }
 
     protected IEnumerator BaseAttack()
@@ -34,11 +38,11 @@ public class BaseChar : MonoBehaviour
 
     protected virtual void CharacterDead()
     {
-
+        print("캐릭터 사망");
     }
 
-    protected void Attack()
+    protected virtual void Attack()
     {
-
+        print("공격!");
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class B_Player : BaseChar
 {
-    public B_Player instance;
+    public static B_Player instance;
     LydiaStat _lydiaStat;
     Scrollbar _myHP;
 
@@ -39,10 +39,10 @@ public class B_Player : BaseChar
     }
 
     
-
-    void UpdateHP()
+    protected override void Attack()
     {
-
+        B_Monster.instance.GetDamage(_attackPower);
     }
+    
     
 }

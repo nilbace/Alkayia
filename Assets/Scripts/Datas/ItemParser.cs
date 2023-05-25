@@ -63,7 +63,7 @@ public class ItemParser : MonoBehaviour
             for (int i = 0; i < line.Length; i++)
             {
                 string[] row = line[i].Split('\t');            
-                Managers.Data.AllMonsterList.Add(new Monster(row[0], int.Parse(row[1]), int.Parse(row[2]), int.Parse(row[3]),  row[4], i, row[5] ));
+                Managers.Data.AllMonsterList.Add(new Monster(row[0], int.Parse(row[1]), float.Parse(row[2]), int.Parse(row[3]),  row[4], i, row[5] ));
             }
 
             isdone++;

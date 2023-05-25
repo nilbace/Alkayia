@@ -42,7 +42,7 @@ public class LobbyUIManager : UI_Scene
 
     void CreateQuestList()
     {
-        for(int i = UserData.instance.mySaveData.int_conqueredMonster+1; i >0 ; i--)
+        for(int i = UserData.instance.mySaveData.int_conqueredMonster+1; i >=0 ; i--)
             {
                 GameObject listObject = Instantiate(QuestList, ContentParent);
                 Define.Monster temp = Managers.Data.AllMonsterList[i];

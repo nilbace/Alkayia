@@ -103,13 +103,13 @@ public class Define
     public string MonName;
     public int Monsterindex;
     public int attackPower;
-    public int attackTerm;
+    public float attackTerm;
     public int HP;
     public string boardExplanation;
     public string AlkayiaTip;
     public Sprite image;
 
-    public Monster(string name = "몬스터!", int attackPower = 5, int attackTerm = 5, int hP = 30, string boardExplanation = "이게 보이면 안된다!",int monindex = 0, string _alktip = "")
+    public Monster(string name = "몬스터!", int attackPower = 5, float attackTerm = 5, int hP = 30, string boardExplanation = "이게 보이면 안된다!",int monindex = 0, string _alktip = "")
         {
             this.MonName = name;
             this.attackPower = attackPower;

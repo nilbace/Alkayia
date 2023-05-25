@@ -766,6 +766,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a328ec9e84bbc9a44b428f1763ca0d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHP: 0
+  _nowHP: 98574
+  _isAlive: 1
+  _attackTerm: 3
+  _attackPower: 0
+  _monImage: {fileID: 401965522}
 --- !u!1 &1189028094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,6 +1750,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72c4d3403612fb4e913919d0f215f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHP: 0
+  _nowHP: 98574
+  _isAlive: 1
+  _attackTerm: 3
+  _attackPower: 0
 --- !u!1 &1866877838
 GameObject:
   m_ObjectHideFlags: 0
