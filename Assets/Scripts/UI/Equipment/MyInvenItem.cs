@@ -26,8 +26,7 @@ public class MyInvenItem : MonoBehaviour
         UserData.instance.mySaveData.changeItem(thisItem.itemCategory, thisItem.ItemIndex);
 
         //인벤토리 닫기
-        print(transform.parent.parent.parent.name);
         transform.parent.parent.parent.gameObject.SetActive(false);
-        MyInventory.instance.ShowMyItems((int)thisItem.itemCategory);
+        MyInventory.instance.ResetUpperInventory();
     }
 }

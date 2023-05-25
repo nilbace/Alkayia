@@ -1,18 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
+using UnityEngine.UI;
 
-public class B_Player : MonoBehaviour
+public class B_Player : BaseChar
 {
-    // Start is called before the first frame update
+    public B_Player instance;
+    LydiaStat _lydiaStat;
+    Scrollbar _myHP;
+
+    
+    private void Awake() {
+        instance = this;
+    }
+
     void Start()
     {
-        
+        Init();
+        StartCoroutine(BaseAttack());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    override protected void Update() {
+        base.Update();
     }
+
+    
+
+    void Init()
+    {
+        _lydiaStat = Managers.Data.LydiaStat;
+        //Scene에서 Awake에 초기화 완료된 값
+
+        _nowHP = _lydiaStat.HP;
+        _maxHP = _lydiaStat.HP;
+
+        _attackPower = _lydiaStat.AttackPower;
+    }
+
+    
+
+    void UpdateHP()
+    {
+
+    }
+    
 }

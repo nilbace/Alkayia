@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class B_Monster : MonoBehaviour
+public class B_Monster : BaseChar
 {
-    // Start is called before the first frame update
+    public B_Monster instance;
+
+    private void Awake() {
+        instance = this;
+    }
     void Start()
     {
         
@@ -15,4 +19,6 @@ public class B_Monster : MonoBehaviour
     {
         
     }
+
+
 }

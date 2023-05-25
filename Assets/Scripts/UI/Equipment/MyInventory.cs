@@ -39,7 +39,7 @@ public class MyInventory : MonoBehaviour
         }
     }
 
-    void ResetUpperInventory()
+    public void ResetUpperInventory()
     {
         for(int i=0;i<6;i++)
         {

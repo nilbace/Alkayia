@@ -26,6 +26,10 @@ public class DataManager
 
     public LydiaStat LydiaStat = new LydiaStat();
 
+    public void Init()
+    {
+        SettingMyStat();
+    }
     void SettingMyStat()
     {
         MyEquipItems myEquipItems = UserData.instance.myEquipItems;

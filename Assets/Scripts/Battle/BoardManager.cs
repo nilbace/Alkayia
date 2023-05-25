@@ -58,7 +58,7 @@ public class BoardManager : MonoBehaviour
         Spawn();
     }
 
-    public void Init()
+    /* public void Init()
     {
         switch(Managers.Data.LydiaStat.MyBoardSize)
         {
@@ -79,7 +79,7 @@ public class BoardManager : MonoBehaviour
         }
         Spawn();
         Spawn();
-    }
+    } */
 
     // Update is called once per frame
     void Update()
