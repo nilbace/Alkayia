@@ -33,4 +33,8 @@ public class B_Monster : BaseChar
         B_Player.instance.GetDamage(_attackPower);
     }
 
+    protected override void CharacterDead()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -8,7 +8,8 @@ public class B_Player : BaseChar
 {
     public static B_Player instance;
     LydiaStat _lydiaStat;
-    Scrollbar _myHP;
+    
+    Button[] _mySkillBTNs;
 
     
     private void Awake() {
@@ -44,5 +45,8 @@ public class B_Player : BaseChar
         B_Monster.instance.GetDamage(_attackPower);
     }
     
-    
+    protected override void CharacterDead()
+    {
+        throw new System.NotImplementedException();
+    }
 }

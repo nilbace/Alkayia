@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class BaseChar : MonoBehaviour
+public abstract class BaseChar : MonoBehaviour
 {
     [SerializeField]protected int _maxHP;
-    [SerializeField]protected int _nowHP = 98574;
+    [SerializeField]protected int _nowHP;
+    [SerializeField]Slider _myHP;
     [SerializeField]protected bool _isAlive = true;
 
     public float _attackTerm = 3f;
     [SerializeField]protected int _attackPower;
+    protected bool _hasBarrier = false;
+    protected int _shieldAmount = 0;
 
 
     protected virtual void Update()
     {
-        if( _nowHP != 98574 && _nowHP<=0 && _isAlive)
+        _myHP.value = (float)_nowHP/_maxHP;
+        if(  _nowHP<=0 && _isAlive)
         {
             _isAlive = false;
             CharacterDead();
@@ -32,17 +37,27 @@ public class BaseChar : MonoBehaviour
 
     public void GetDamage(int dam)
     {
-        _nowHP-=dam;
+        if(_hasBarrier || _shieldAmount > 0)
+        {
+            if(_hasBarrier)
+            {
+                _hasBarrier = false;
+                return;
+            }
 
+            if(_shieldAmount > 0)
+            {
+                _shieldAmount -= dam;
+                return;
+            }
+        }
+
+        else
+            _nowHP-=dam;
     }
 
-    protected virtual void CharacterDead()
-    {
-        print("캐릭터 사망");
-    }
+    protected abstract void CharacterDead();
 
-    protected virtual void Attack()
-    {
-        print("공격!");
-    }
+    protected abstract void Attack();
+    
 }
