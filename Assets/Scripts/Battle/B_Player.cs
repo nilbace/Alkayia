@@ -47,6 +47,11 @@ public class B_Player : BaseChar
     
     protected override void CharacterDead()
     {
-        throw new System.NotImplementedException();
+        print("리디아 사망");
+    }
+
+    protected void ShowMySkills()
+    {
+        
     }
 }

@@ -35,6 +35,6 @@ public class B_Monster : BaseChar
 
     protected override void CharacterDead()
     {
-        throw new System.NotImplementedException();
+        print("몬스터 사망");
     }
 }
