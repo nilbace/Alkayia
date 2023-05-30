@@ -81,15 +81,13 @@ public class UserData : MonoBehaviour
 
     [Serializable]
     public class SaveData{
-        public AlkayiaSkill Data_learnedSkill;
         public int int_conqueredMonster;
         public List<int> Purchased_Equipments_index;
         public List<int> equiping_Equipments_index;
         public int myMoney;
 
-        public SaveData(AlkayiaSkill data_learnedSkill = AlkayiaSkill.IceNeedle, int conqueredmonster = 0)
+        public SaveData(int conqueredmonster = 0)
         {
-            Data_learnedSkill = data_learnedSkill;
             int_conqueredMonster = conqueredmonster;
             Purchased_Equipments_index = null;
             equiping_Equipments_index = null;

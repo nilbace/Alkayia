@@ -1,18 +1,6 @@
 using UnityEngine;
 public class Define
 {
-    public enum AlkayiaSkill{
-        IceNeedle, 
-        IceShield, 
-        IceSpear, 
-        IceThorn, 
-        IceShower, 
-        IceStorm, 
-        IceSword, 
-        IceHammer, 
-        IceBreath,
-        MaxCount
-    }
 
     public enum ItemCategory{Amplifier, Necklace, Bracelet, Earrings, Destroy, Balance}
 
@@ -153,5 +141,23 @@ public class Define
 
     public enum CharName {
         Lydia , Alkayia, Nadira, Lyra, 
-    };
+    }
+
+    public enum EffectName{
+        Blaze,
+        
+
+    }
+
+    public class Effect{
+
+    }
+
+    public class Skill{
+        bool _targetIsMe;
+        bool _isAttackSkill;
+        bool _isBuffSkill;
+        bool _isDebuffSkill;
+        bool sdf;
+    }
 }
